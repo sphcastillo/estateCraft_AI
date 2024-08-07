@@ -65,7 +65,7 @@ export default function Home() {
               Transform Your PDFs into Interactive Conversations
             </p>
 
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
               Introducing{" "}
               <span className="font-bold text-indigo-600">Chat with PDF.</span>
               <br/>
@@ -76,7 +76,8 @@ export default function Home() {
                 turns static documents into {" "}
                 <span className="font-bold">dynamic conversations</span>,
                 enhancing productivity 10x fold effortlessly.
-            </p>
+            </p> */}
+            <p className="mt-6 text-lg leading-8 text-gray-600">Elevate your real estate business with EstateCraft AI, the cutting-edge SaaS designed to transform your property listings into captivating, professional presentations. Harnessing the power of OpenAI, EstateCraft AI simplifies the creation process, ensuring you present each property in the best possible light.</p>
           </div>
           {/* Button is a child / asChild prop is needed */}
           <Button asChild className="mt-10">
