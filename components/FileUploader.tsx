@@ -9,7 +9,7 @@ import {
   RocketIcon,
   SaveIcon,
 } from "lucide-react";
-import useUpload from "@/hooks/useUpload";
+import useUpload, { StatusText } from "@/hooks/useUpload";
 import { useRouter } from "next/navigation";
 
 function FileUploader() {
@@ -35,6 +35,15 @@ function FileUploader() {
       // toast
     }
   }, []);
+
+  const statusIcons: {
+    [key in StatusText]: JSX.Element;
+} = {
+    [StatusText.UPLOADING]: <RocketIcon className="w-20 h-20 text-indigo-600" />,
+    [StatusText.UPLOADED]: <CheckCircleIcon className="w-20 h-20 text-indigo-600" />,
+    [StatusText.SAVING]: <SaveIcon className="w-20 h-20 text-indigo-600" />,
+    [StatusText.GENERATING]: <HammerIcon className="w-20 h-20 text-indigo-600 animate-bounce" />,
+}
 
   const { getRootProps, getInputProps, isDragActive, isFocused, isDragAccept } =
     useDropzone({
@@ -79,7 +88,7 @@ function FileUploader() {
         </div>
       )}
 
-      <div
+      {!uploadInProgress && (<div
         {...getRootProps()}
         className={`p-10 border-2 border-dashed mt-10 w-[90%] border-indigo-600 text-indigo-600 rounded-lg h-96 flex items-center justify-center ${
           isFocused || isDragAccept ? "bg-indigo-300" : "bg-indigo-100"
@@ -96,11 +105,11 @@ function FileUploader() {
           ) : (
             <>
               <CircleArrowDown className="w-20 h-20 animate-bounce" />
-              <p>Drag 'n' drop some files here, or click to select files</p>
+              <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
             </>
           )}
         </div>
-      </div>
+      </div>)}
     </div>
   );
 }
