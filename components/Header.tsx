@@ -11,8 +11,8 @@ function Header() {
             href="/dashboard"
             className="text-2xl"
         >
-        Chat to {' '}
-        <span className="text-indigo-600">PDF</span>
+        EstateCraft {' '}
+        <span className="text-indigo-600">AI</span>
         </Link>
 
         <SignedIn>
