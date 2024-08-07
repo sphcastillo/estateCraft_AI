@@ -4,8 +4,14 @@ import { getStorage } from "firebase-admin/storage";
 
 // const serviceKey = require('@/service_key.json');
 
-const serviceKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string);
+// const serviceKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string);
 // const serviceKey = process.env.FIREBASE_SERVICE_ACCOUNT_KEY as string;
+const serviceKey = JSON.parse(
+    Buffer.from(
+    process.env.FIREBASE_SERVICE_ACCOUNT_BASE64 || "",
+    "base64",
+    ).toString(),
+    );
 
 let app: App;
  
