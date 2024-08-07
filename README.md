@@ -1,6 +1,9 @@
 # EstateCrafter AI
 
 ## Description
+Revolutionize Your Real Estate Listings with AI-Driven Excellence.
+
+Welcome to EstateCraft AI, the ultimate SaaS designed to elevate your real estate business by transforming your property listings into captivating, professional presentations. Powered by advanced AI technology from OpenAI, EstateCraft AI simplifies and enhances the creation process, ensuring your properties are showcased in the best possible light.
 
 ## Requirements
 
