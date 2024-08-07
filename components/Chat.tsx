@@ -25,7 +25,7 @@ function Chat({ id }: { id: string }) {
   const [input, setInput] = useState("");
   const [isPending, startTransition] = useTransition();
   const [messages, setMessages] = useState<Message[]>([]);
-  // const bottomOfChatRef = useRef<HTMLDivElement>(null);
+  const bottomOfChatRef = useRef<HTMLDivElement>(null);
 
   const [snapshot, loading, error] = useCollection(
     user &&
@@ -36,11 +36,11 @@ function Chat({ id }: { id: string }) {
   );
 
 
-  // useEffect(() => {
-  //   bottomOfChatRef.current?.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // }, [messages]);
+  useEffect(() => {
+    bottomOfChatRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [messages]);
 
 
   useEffect(() => {
@@ -127,12 +127,7 @@ function Chat({ id }: { id: string }) {
       <div className="flex-1 w-full">
         {/* chat messages */}
 
-        {messages.map((message) => (
-          <div key={message.id}>
-            <p>{message.message}</p>
-          </div>
-        ))}
-        {/* {loading ? (
+        {loading ? (
           <div className="flex items-center justify-center">
             <Loader2Icon className="animate-spin h-20 w-20 mt-20 text-indigo-600" />
           </div>
@@ -154,7 +149,7 @@ function Chat({ id }: { id: string }) {
             ))}
             <div ref={bottomOfChatRef} />
           </div>
-        )} */}
+        )}
       </div>
 
       <form
