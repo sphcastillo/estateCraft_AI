@@ -2,11 +2,12 @@
 
 import { useRouter } from "next/navigation";
 import byteSize from "byte-size";
-// import useSubscription from "@/hooks/useSubscription";
+import useSubscription from "@/hooks/useSubscription";
 import { useTransition } from "react";
 import { DownloadCloud, Trash2Icon } from "lucide-react";
 import { Button } from "./ui/button";
-// import { deleteDocument } from "@/actions/deleteDocument";
+import { deleteDocument } from "@/actions/deleteDocument";
+
 
 function Document({
     id,
@@ -20,8 +21,9 @@ function Document({
     downloadUrl: string;
 }) {
     const router = useRouter();
-    // const [isDeleting, startTransition] = useTransition();
-    // const { hasActiveMembership } = useSubscription();
+    const [isDeleting, startTransition] = useTransition();
+    const { hasActiveMembership } = useSubscription();
+
     return (
         <div className="flex flex-col w-64 h-80 rounded-xl bg-white drop-shadow-md justify-between p-4 transition-all transform hover:scale-105 hover:bg-indigo-600 hover:text-white cursor-pointer group">
             <div 
@@ -38,7 +40,7 @@ function Document({
             </div>
 
             {/* Actions */}
-            {/* <div className="flex space-x-2 justify-end">
+            <div className="flex space-x-2 justify-end">
                 <Button
                     variant='outline'
                     disabled={isDeleting || !hasActiveMembership}
@@ -67,11 +69,13 @@ function Document({
                     <a 
                         href={downloadUrl}
                         download
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <DownloadCloud className="h-6 w-6 text-indigo-600"/>
                     </a>
                 </Button>
-            </div> */}
+            </div>
         </div>
     )
 }

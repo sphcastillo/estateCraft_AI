@@ -1,5 +1,4 @@
 'use server'
-
 import { UserDetails } from "@/app/dashboard/upgrade/page";
 import { adminDb } from "@/firebaseAdmin";
 import getBaseUrl from '@/lib/getBaseUrl';
@@ -16,6 +15,7 @@ export async function createCheckoutSession(userDetails: UserDetails){
     // first check if the user already has a stripeCustomerId
     let stripeCustomerId; 
 
+    // get user document
     const user = await adminDb.collection('users').doc(userId).get();
     stripeCustomerId = user.data()?.stripeCustomerId;
 
@@ -24,6 +24,7 @@ export async function createCheckoutSession(userDetails: UserDetails){
         const customer = await stripe.customers.create({
             email: userDetails.email,
             name: userDetails.name,
+            // clerk id = userId = stripe id
             metadata: {
                 userId,
             }
@@ -46,10 +47,10 @@ export async function createCheckoutSession(userDetails: UserDetails){
             }
         ],
         mode: 'subscription',
+        // customer who we are associating this session with
         customer: stripeCustomerId,
         success_url: `${getBaseUrl()}/dashboard?upgrade=true`,
         cancel_url: `${getBaseUrl()}/dashboard/upgrade`
     });
-
     return session.id;
 }

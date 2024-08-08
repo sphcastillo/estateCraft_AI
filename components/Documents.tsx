@@ -18,6 +18,9 @@ async function Documents() {
     .collection("files")
     .get();
 
+  // console.log("Documents: ", documentsSnapshot.docs);
+  // console.log("Documents length: ", documentsSnapshot.docs.length);
+
   return (
     <div className="flex flex-wrap p-5 bg-gray-100 justify-center lg:justify-start rounded-sm gap-5 max-w-7xl mx-auto">
         {/* Map through the documents */}

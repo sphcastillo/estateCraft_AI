@@ -6,7 +6,7 @@ import { generateLangChainCompletion } from "@/lib/langchain";
 import { auth } from "@clerk/nextjs/server";
 
 const FREE_LIMIT = 3;
-const PRO_LIMIT = 50;
+const PRO_LIMIT = 100;
 
 export async function askQuestion(id: string, question: string){
     auth().protect();
@@ -26,33 +26,33 @@ export async function askQuestion(id: string, question: string){
     );
 
     // // check membership limits for messages in a document
-    // const userRef = await adminDb.collection("users").doc(userId!).get();
+    const userRef = await adminDb.collection("users").doc(userId!).get();
 
-    // console.log("User ref: ", userRef.data());
+    console.log("User ref: ", userRef.data());
     // limit the PRO/FREE users
     // check if user is on FREE plan and has asked more than the FREE number of questions
-    // if(!userRef.data()?.hasActiveMembership){
-    //     console.log('user Messages length / free limit: ', userMessages.length, FREE_LIMIT);
+    if(!userRef.data()?.hasActiveMembership){
+        console.log('user Messages length / free limit: ', userMessages.length, FREE_LIMIT);
 
-    //     if(userMessages.length >= FREE_LIMIT){
-    //         return {
-    //             success: false,
-    //             message: `You have reached the limit of ${FREE_LIMIT} questions for the free plan. Upgrade to the PRO plan to ask more questions. 🙂`
-    //         };
-    //     }
-    // }
+        if(userMessages.length >= FREE_LIMIT){
+            return {
+                success: false,
+                message: `You have reached the limit of ${FREE_LIMIT} questions for the free plan. Upgrade to the PRO plan to ask more questions. 🙂`
+            };
+        }
+    }
 
     // check if user is on PRO plan and has asked more than 100 questions
-    // if(userRef.data()?.hasActiveMembership){
-    //     console.log("user messages length / pro limit: ", userMessages.length, PRO_LIMIT);
-    //     if(userMessages.length >= PRO_LIMIT){
-    //         return {
-    //             success: false,
-    //             message: `You have reached the limit of ${PRO_LIMIT} questions per document! 🙂`
-    //         };
+    if(userRef.data()?.hasActiveMembership){
+        console.log("user messages length / pro limit: ", userMessages.length, PRO_LIMIT);
+        if(userMessages.length >= PRO_LIMIT){
+            return {
+                success: false,
+                message: `You have reached the limit of ${PRO_LIMIT} questions per document! 🙂`
+            };
             
-    //     }
-    // }
+        }
+    }
     
     const userMessage: Message = {
         role: 'human',
