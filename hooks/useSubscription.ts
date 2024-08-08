@@ -33,7 +33,10 @@ function useSubscription() {
         if(!snapshot) return;
 
         const data = snapshot.data();
+        console.log("Debug #1 ~ Subscription data: ", data);
         if(!data) return;
+
+        console.log("Debug #2 ~ Are we active membership: ", data.hasActiveMembership);
 
         setHasActiveMembership(data.hasActiveMembership)
 

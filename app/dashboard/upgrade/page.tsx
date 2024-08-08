@@ -1,6 +1,6 @@
 "use client";
 import { createCheckoutSession } from "@/actions/createCheckoutSession";
-// import { createStripePortal } from "@/actions/createStripePortal";
+import { createStripePortal } from "@/actions/createStripePortal";
 import { Button } from "@/components/ui/button";
 import useSubscription from "@/hooks/useSubscription";
 import getStripe from "@/lib/stripe-js";
@@ -34,12 +34,11 @@ export default function PricingPage() {
     startTransition(async () => {
       const stripe = await getStripe();
 
-      // if (hasActiveMembership) {
-      //   create Stripe portal...
-      //   const stripePortalUrl = await createStripePortal();
-      //   return router.push(stripePortalUrl);
-      //   console.log("User has active membership");
-      // }
+      if (hasActiveMembership) {
+        // Create Stripe portal...
+        const stripePortalUrl = await createStripePortal();
+        return router.push(stripePortalUrl);
+      }
 
       const sessionId = await createCheckoutSession(userDetails);
 
