@@ -15,6 +15,8 @@ https://github.com/sphcastillo/estateCraft_AI
 
 ## Deployed Site
 
+https://estate-craft-ai.vercel.app/
+
 ## More info
 
 Author: Sophia Castillo,
