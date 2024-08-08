@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET
     );
-    console.log("inside webhook ~ Event: ", event);
   } catch (err) {
     console.error(`Webhook Error: ${err}`);
     return new NextResponse(`Webhook Error: ${err}`, { status: 400 });
@@ -55,7 +54,6 @@ export async function POST(req: NextRequest) {
       const customerId = invoice.customer as string;
 
       const userDetails = await getUserDetails(customerId);
-      console.log("Payment_intent.succeeded: User details: ", userDetails);
       if (!userDetails?.id) {
         return new NextResponse("User not found", { status: 404 });
       }

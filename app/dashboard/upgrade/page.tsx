@@ -34,12 +34,12 @@ export default function PricingPage() {
     startTransition(async () => {
       const stripe = await getStripe();
 
-      if (hasActiveMembership) {
-        // create Stripe portal...
-        // const stripePortalUrl = await createStripePortal();
-        // return router.push(stripePortalUrl);
-        console.log("User has active membership");
-      }
+      // if (hasActiveMembership) {
+      //   create Stripe portal...
+      //   const stripePortalUrl = await createStripePortal();
+      //   return router.push(stripePortalUrl);
+      //   console.log("User has active membership");
+      // }
 
       const sessionId = await createCheckoutSession(userDetails);
 
