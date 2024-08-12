@@ -6,6 +6,7 @@ import useSubscription from "@/hooks/useSubscription";
 
 function PlaceholderDocument() {
     const { isOverFileLimit } = useSubscription();
+    console.log('isOverFileLimit: ', isOverFileLimit);
     const router = useRouter();
 
     const handleClick = () => {
