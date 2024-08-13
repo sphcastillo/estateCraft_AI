@@ -51,13 +51,13 @@ const features = [
 
 export default function Home() {
   return (
-    <main className="flex-1 overflow-scroll p-2 lg:p-5 bg-gradient-to-bl from-white to-indigo-600">
+    <main className="flex-1 overflow-scroll p-2 lg:p-5 bg-gradient-to-bl from-white to-blue-600">
       <div className="bg-white py-24 sm:py-32 rounded-md drop-shadow-xl">
 
         <div className="flex flex-col justify-center items-center mx-auto max-w-7xl px-6 lg:px-8">
 
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-base font-semibold text-indigo-600">
+            <h2 className="text-base font-semibold text-blue-600">
               Your Interactive Document Companion
             </h2>
 
@@ -114,7 +114,7 @@ export default function Home() {
                 <dt className="font-semibold text-gray-900 inline">
                 <feature.icon 
                     aria-hidden="true"
-                    className="absolute top-1 left-1 h-5 w-5 text-indigo-600"
+                    className="absolute top-1 left-1 h-5 w-5 text-blue-600"
                   />
                 </dt>
                 <dd>{feature.description}</dd>
