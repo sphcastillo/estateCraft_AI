@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.14",
+    "@heroicons/react": "^2.1.5",
     "@langchain/community": "^0.2.24",
     "@langchain/core": "^0.2.21",
     "@langchain/openai": "^0.2.6",
