@@ -64,7 +64,7 @@ export default function Home() {
       <Navbar />
       <div className="bg-[#012e33] py-24 sm:py-20 drop-shadow-xl">
         <div className="flex flex-col justify-center items-center mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl sm:text-center">
+          <div className="mx-auto max-w-3xl sm:text-center">
             <h2
               className={`${zeyada.className} text-[22px] tracking-wide text-[#f5f33a]`}
             >
@@ -92,15 +92,24 @@ export default function Home() {
             <p
               className={`${pt_sans.className} mt-6 text-lg leading-8 text-white`}
             >
-              Harness the power of AI with EstateCraft AI to elevate your real
-              estate presentations. Our platform enhances your listings with
-              tailored content, optimized design, and interactive features,
-              helping you make a memorable impact and close deals more
-              effectively.
+              Harness the power of AI with{" "}
+              <span
+                className={`${nunito.className} text-[#f5f33a] tracking-wide`}
+              >
+                {" "}
+                EstateCraft AI
+              </span>{" "}
+              to elevate your real estate presentations. Our platform enhances
+              your listings with tailored content, optimized design, and
+              interactive features, helping you make a memorable impact and
+              close deals more effectively.
             </p>
           </div>
           {/* Button is a child / asChild prop is needed */}
-          <Button asChild className="mt-4 bg-[#f5f33a] text-[#637b38]">
+          <Button
+            asChild
+            className={`${fire_sans.className} mt-4 bg-[#f5f33a] text-[#637b38] tracking-wide rounded-2xl`}
+          >
             <Link href="/dashboard">Get Started</Link>
           </Button>
         </div>
@@ -142,9 +151,17 @@ export default function Home() {
               <p
                 className={`${pt_sans.className} mt-6 text-base leading-7 text-white`}
               >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                It's designed to revolutionize the way real estate agents create
+                and enhance their property listings. By seamlessly integrating
+                PDF uploading, content extraction, and AI-driven
+                recommendations, our platform provides a comprehensive suite of
+                tools to streamline the listing process. Agents can customize
+                professional templates, receive automated content enhancements,
+                and access powerful analytics—all within a single, user-friendly
+                interface. EstateCraft AI empowers agents to efficiently manage
+                their listings, collaborate with teams, and elevate their
+                property presentations, all while leveraging the latest in AI
+                technology to optimize their marketing efforts.
               </p>
             </div>
             <dl className="col-span-2 grid grid-cols-1 gap-x-8 gap-y-10 text-base leading-7 text-white sm:grid-cols-2 lg:gap-y-16">
@@ -162,7 +179,9 @@ export default function Home() {
                     </span>
                   </dt>
                   <dd className="mt-2">
-                    <span className={`${pt_sans.className} tracking-wide text-[16px]`}>
+                    <span
+                      className={`${pt_sans.className} tracking-wide text-[16px]`}
+                    >
                       {feature.description}
                     </span>
                   </dd>
